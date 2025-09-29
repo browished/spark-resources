@@ -4,351 +4,166 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Windows Software - Spark</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: #e2e8f0;
-            background: #0f172a;
-            padding: 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .header {
-            text-align: center;
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 2px solid #334155;
-        }
-        
-        .header h1 {
-            font-size: 3rem;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1rem;
-        }
-        
-        .tip-box {
-            background: #1e293b;
-            border: 1px solid #334155;
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .tip-box h3 {
-            color: #6366f1;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .attention-box {
-            background: linear-gradient(135deg, #1e293b, #334155);
-            border: 1px solid #6366f1;
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .attention-box h3 {
-            color: #f59e0b;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .discord-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: #5865f2;
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            margin-top: 1rem;
-        }
-        
-        .discord-link:hover {
-            background: #4752c4;
-            transform: translateY(-2px);
-        }
-        
-        .note-box {
-            background: #1e293b;
-            border-left: 4px solid #f59e0b;
-            padding: 1rem 1.5rem;
-            margin: 1.5rem 0;
-            border-radius: 0 8px 8px 0;
-        }
-        
-        .software-section {
-            margin-bottom: 3rem;
-        }
-        
-        .software-section h2 {
-            color: #6366f1;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #334155;
-        }
-        
-        .software-grid {
-            display: grid;
-            gap: 1.5rem;
-        }
-        
-        .software-category {
-            background: #1e293b;
-            border: 1px solid #334155;
-            border-radius: 12px;
-            padding: 2rem;
-        }
-        
-        .software-category h3 {
-            color: #f1f5f9;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .software-list {
-            list-style: none;
-        }
-        
-        .software-item {
-            background: #0f172a;
-            border: 1px solid #334155;
-            border-radius: 8px;
-            padding: 1.25rem;
-            margin-bottom: 1rem;
-            transition: all 0.3s ease;
-        }
-        
-        .software-item:hover {
-            border-color: #6366f1;
-            transform: translateX(8px);
-        }
-        
-        .software-name {
-            color: #f1f5f9;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .software-password {
-            color: #f59e0b;
-            font-size: 0.9rem;
-            background: rgba(245, 158, 11, 0.1);
-            padding: 0.25rem 0.75rem;
-            border-radius: 6px;
-            display: inline-block;
-            margin-top: 0.5rem;
-        }
-        
-        .download-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: #6366f1;
-            color: white;
-            padding: 0.6rem 1.2rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            margin-top: 0.75rem;
-        }
-        
-        .download-btn:hover {
-            background: #4f46e5;
-            transform: translateY(-2px);
-        }
-        
-        .plugins-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-        
-        .plugin-card {
-            background: #1e293b;
-            border: 1px solid #334155;
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        
-        .plugin-card:hover {
-            border-color: #6366f1;
-            transform: translateY(-4px);
-        }
-        
-        .plugin-card h4 {
-            color: #f1f5f9;
-            margin-bottom: 1rem;
-        }
-        
-        @media (max-width: 768px) {
-            body {
-                padding: 1rem;
-            }
-            
-            .header h1 {
-                font-size: 2rem;
-            }
-            
-            .plugins-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .software-category {
-                padding: 1.5rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <div class="header">
+    <div class="markdown-container">
         <h1>Windows</h1>
-    </div>
+        
+        <div class="callout note">
+            <div class="callout-title">
+                <i class="fas fa-lightbulb"></i> TPI
+            </div>
+            Use <kbd>Ctrl + F</kbd> to easily navigate the page.
+        </div>
 
-    <div class="tip-box">
-        <h3>🚀 TPI</h3>
-        <p>Use <kbd>Ctrl + F</kbd> to easily navigate the page.</p>
-    </div>
+        <div class="callout warning">
+            <div class="callout-title">
+                <i class="fas fa-exclamation-triangle"></i> Attention
+            </div>
+            If you're seeking more Windows resources, please join the server listed below:
+            <br><br>
+            <a href="https://discord.gg/example" class="download-btn" target="_blank">
+                <i class="fab fa-discord"></i> Join Discord Server
+            </a>
+        </div>
 
-    <div class="attention-box">
-        <h3>⚠️ Attention</h3>
-        <p>If you're seeking more Windows resources, please join the server listed below:</p>
-        <a href="https://discord.gg/example" class="discord-link" target="_blank">
-            <i class="fab fa-discord"></i> Join Discord Server
-        </a>
-    </div>
+        <div class="callout">
+            <div class="callout-title">
+                <i class="fas fa-info-circle"></i> Note
+            </div>
+            Please note that our current selection of resources is limited.
+        </div>
 
-    <div class="note-box">
-        <p><strong>Please note:</strong> Our current selection of resources is limited.</p>
-    </div>
-
-    <div class="software-section">
         <h2>Software</h2>
-        
-        <div class="software-grid">
-            <!-- Adobe -->
-            <div class="software-category">
-                <h3>🎨 Adobe</h3>
-                <ul class="software-list">
-                    <li class="software-item">
-                        <div class="software-name">
-                            <i class="fas fa-film"></i> After Effects 2025
-                        </div>
-                        <div class="software-password">Password: .tarix.</div>
-                        <a href="#" class="download-btn">
-                            <i class="fas fa-download"></i> Download
-                        </a>
-                    </li>
-                    <li class="software-item">
-                        <div class="software-name">
-                            <i class="fas fa-film"></i> After Effects 2024
-                        </div>
-                        <div class="software-password">Password: .tarix.</div>
-                        <a href="#" class="download-btn">
-                            <i class="fas fa-download"></i> Download
-                        </a>
-                    </li>
-                    <li class="software-item">
-                        <div class="software-name">
-                            <i class="fas fa-video"></i> Media Encoder 2023
-                        </div>
-                        <a href="#" class="download-btn">
-                            <i class="fas fa-download"></i> Download
-                        </a>
-                    </li>
-                </ul>
-            </div>
 
-            <!-- Topaz Labs -->
-            <div class="software-category">
-                <h3>⚡ Topaz Labs</h3>
-                <ul class="software-list">
-                    <li class="software-item">
-                        <div class="software-name">
-                            <i class="fas fa-magic"></i> Topaz Video Enhance AI v.2.6.0
-                        </div>
-                        <a href="#" class="download-btn">
-                            <i class="fas fa-download"></i> Download
-                        </a>
-                    </li>
-                    <li class="software-item">
-                        <div class="software-name">
-                            <i class="fas fa-magic"></i> Topaz Video Enhance AI v.2.6.4
-                        </div>
-                        <div class="software-password">Password: .tarix.</div>
-                        <a href="#" class="download-btn">
-                            <i class="fas fa-download"></i> Download
-                        </a>
-                    </li>
-                    <li class="software-item">
-                        <div class="software-name">
-                            <i class="fas fa-magic"></i> Topaz Video Enhance AI v.3.1.0
-                        </div>
-                        <div class="software-password">Password: .tarix.</div>
-                        <a href="#" class="download-btn">
-                            <i class="fas fa-download"></i> Download
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
+        <h3><i class="fas fa-palette"></i> Adobe</h3>
+        <ul>
+            <li>
+                <strong>After Effects 2025</strong>
+                <div class="software-password">Password: .tarix.</div>
+                <a href="#" class="software-link">
+                    <i class="fas fa-download"></i> Download
+                </a>
+            </li>
+            <li>
+                <strong>After Effects 2024</strong>
+                <div class="software-password">Password: .tarix.</div>
+                <a href="#" class="software-link">
+                    <i class="fas fa-download"></i> Download
+                </a>
+            </li>
+            <li>
+                <strong>Media Encoder 2023</strong>
+                <a href="#" class="software-link">
+                    <i class="fas fa-download"></i> Download
+                </a>
+            </li>
+        </ul>
 
-    <div class="software-section">
+        <h3><i class="fas fa-bolt"></i> Topaz Labs</h3>
+        <ul>
+            <li>
+                <strong>Topaz Video Enhance AI v.2.6.0</strong>
+                <a href="#" class="software-link">
+                    <i class="fas fa-download"></i> Download
+                </a>
+            </li>
+            <li>
+                <strong>Topaz Video Enhance AI v.2.6.4</strong>
+                <div class="software-password">Password: .tarix.</div>
+                <a href="#" class="software-link">
+                    <i class="fas fa-download"></i> Download
+                </a>
+            </li>
+            <li>
+                <strong>Topaz Video Enhance AI v.3.1.0</strong>
+                <div class="software-password">Password: .tarix.</div>
+                <a href="#" class="software-link">
+                    <i class="fas fa-download"></i> Download
+                </a>
+            </li>
+        </ul>
+
         <h2>Plugins</h2>
-        
-        <div class="software-category">
-            <h3>🔌 Windows Plugins</h3>
-            <div class="plugins-grid">
-                <div class="plugin-card">
-                    <h4>BCE 2024</h4>
-                    <div class="software-password">Password: .tarix.</div>
-                    <a href="#" class="download-btn">
-                        <i class="fas fa-download"></i> Download
-                    </a>
-                </div>
-                <div class="plugin-card">
-                    <h4>Sangtime for AE 2022</h4>
-                    <a href="#" class="download-btn">
-                        <i class="fas fa-download"></i> Download
-                    </a>
-                </div>
+
+        <h3><i class="fas fa-puzzle-piece"></i> Windows Plugins</h3>
+        <div class="software-grid">
+            <div class="software-card">
+                <h4>BCE 2024</h4>
+                <div class="software-password">Password: .tarix.</div>
+                <a href="#" class="software-link">
+                    <i class="fas fa-download"></i> Download
+                </a>
+            </div>
+            <div class="software-card">
+                <h4>Sangtime for AE 2022</h4>
+                <a href="#" class="software-link">
+                    <i class="fas fa-download"></i> Download
+                </a>
             </div>
         </div>
     </div>
 
-    <!-- Font Awesome for icons -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+    <style>
+        .software-password {
+            background: rgba(245, 158, 11, 0.1);
+            color: #f59e0b;
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin: 0.5rem 0;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .software-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--accent);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .software-link:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+        }
+
+        .software-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .software-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .software-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        kbd {
+            background: var(--code-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 0.2rem 0.5rem;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+        }
+    </style>
 </body>
 </html>
